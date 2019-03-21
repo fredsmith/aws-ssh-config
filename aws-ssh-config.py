@@ -1,5 +1,4 @@
 #! /usr/bin/env python
-
 import argparse
 import re
 import sys
@@ -118,7 +117,7 @@ def main():
 				counts_incremental[id] += 1
 				id += '-' + str(counts_incremental[id])
 
-			print 'Host ' + args.prefix + id
+			print 'Host ' + args.prefix.decode("ascii", "ignore") + id.decode("ascii", "ignore")
 			print '    HostName ' + ip
 
 			try:
@@ -127,7 +126,6 @@ def main():
 			except:
 				pass
 
-			print '    IdentityFile ~/.ssh/' + instance.key_name + '.pem'
 			print '    StrictHostKeyChecking no' # just for me, removing this is usually a good choice
 			print
 
